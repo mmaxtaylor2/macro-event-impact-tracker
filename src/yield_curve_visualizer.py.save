@@ -1,0 +1,61 @@
+plt.close()
+
+print("Plot saved to:", output_path)
+print("SCRIPT FINISHED")
+
+import os
+import pandas as pd
+import matplotlib.pyplot as plt
+
+print("SCRIPT STARTED")
+
+# --------------------------------------------------
+# Project paths
+# --------------------------------------------------
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CHART_DIR = os.path.join(BASE_DIR, "charts")
+os.makedirs(CHART_DIR, exist_ok=True)
+
+print("Charts directory:", CHART_DIR)
+
+# --------------------------------------------------
+# Common maturities
+# --------------------------------------------------
+maturities = [0.25, 0.5, 1, 2, 5, 10, 20, 30]
+
+# --------------------------------------------------
+# Yield curve scenarios
+# --------------------------------------------------
+yield_scenarios = {
+    "normal":   [5.30, 5.20, 5.05, 4.80, 4.40, 4.20, 4.35, 4.40],
+    "flat":     [4.80, 4.78, 4.75, 4.72, 4.70, 4.68, 4.67, 4.66],
+    "inverted": [5.40, 5.30, 5.10, 4.70, 4.30, 4.10, 4.15, 4.20],
+    "steep":    [3.80, 3.90, 4.10, 4.50, 5.00, 5.40, 5.60, 5.70],
+}
+
+# --------------------------------------------------
+# Generate and save plots
+# --------------------------------------------------
+for scenario, yields in yield_scenarios.items():
+    df = pd.DataFrame({
+        "Maturity (Years)": maturities,
+        "Yield (%)": yields
+    })
+
+    print(f"Plotting scenario: {scenario}")
+
+    plt.figure()
+    plt.plot(df["Maturity (Years)"], df["Yield (%)"], marker="o")
+    plt.xlabel("Maturity (Years)")
+    plt.ylabel("Yield (%)")
+    plt.title(f"Yield Curve Scenario: {scenario.capitalize()}")
+    plt.grid(True)
+
+    output_path = os.path.join(CHART_DIR, f"yield_curve_{scenario}.png")
+    plt.savefig(output_path)
+    plt.close()
+
+    print(f"Saved -> {output_path}")
+
+print("SCRIPT FINISHED")
+

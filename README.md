@@ -53,11 +53,6 @@ All data is historical, publicly available, and programmatically retrieved.
 
 ## Project Structure
 
-=======
->>>>>>> 4a6aeab25acd84c544b7041539372947fa503855
-
----
-
 ## Yield Curve Visualizer & Analytics Engine
 
 This repository also includes a yield curve visualization and analytics engine

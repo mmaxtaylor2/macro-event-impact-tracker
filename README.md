@@ -55,3 +55,27 @@ All data is historical, publicly available, and programmatically retrieved.
 
 =======
 >>>>>>> 4a6aeab25acd84c544b7041539372947fa503855
+
+---
+
+## Yield Curve Visualizer & Analytics Engine
+
+This repository also includes a yield curve visualization and analytics engine
+that analyzes the U.S. Treasury term structure using both synthetic scenarios
+and real market data.
+
+### Features
+- Synthetic yield curve scenarios (normal, flat, inverted, steep)
+- Live U.S. Treasury yields pulled directly from FRED
+- Robust handling of weekends and holidays
+- Yield curve comparison across time
+- 10Y–2Y spread calculation
+- Automatic yield curve regime classification (Normal / Flat / Inverted)
+
+### Outputs
+- Static yield curve charts saved to the `/charts` directory
+- Terminal analytics summarizing slope and regime classification
+
+This component mirrors how macro and rates analysts monitor interest-rate
+conditions and assess recession risk through yield curve dynamics.
+
